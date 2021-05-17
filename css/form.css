@@ -1,41 +1,44 @@
 body {
     margin: 2em;
-  }
-.header{
+    align-content: center;
+}
+
+.headerTask {
     text-align: center;
     color: blue
 }
 
-.formLayout{
+form {
+    justify-content: center;
+    display: flex;
+}
+
+.formLayout {
     display: grid;
-    row-gap: 50px;
-    align-items: center;
-    
+    row-gap: inherit;
+    border: 2px blue solid;
+    padding: 10px;
+    height: 50%;
+    width: 80%;
 }
 
-label{
+label {
     font-weight: bold;
- 
 }
 
-
-.inputTask{
-    
-    max-width:80%;
+.dropdownRow {
+    column-gap: 20%;
 }
 
-.addButton{
+.inputTask {
+    width: 100%;
+}
+
+.addButton {
     margin: auto;
-    text-align: center;
-
-}
-.taskDescription{
-    justify-self: left;
-    max-width:95%;
-    rows
-
+    text-align: justify;
 }
 
-
-
-
+.taskDescription {
+    width: 100%;
+}
