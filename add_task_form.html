@@ -30,35 +30,50 @@
             <div class="col-sm">
                 <div class="dropdown">
                     <label for="statusButton">Status</label>
-                    <button class="btn btn-primary dropdown-toggle" type="button" id="statusButton" data-bs-toggle="dropdown" aria-expanded="false">
+                    <!-- <button class="btn btn-primary dropdown-toggle" type="button" id="statusButton" data-bs-toggle="dropdown" aria-expanded="false">
                       Status
                     </button>
                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                       <li><a class="dropdown-item" href="#">To Do</a></li>
                       <li><a class="dropdown-item" href="#">In Progress</a></li>
                       <li><a class="dropdown-item" href="#">Done</a></li>
-                    </ul>
+                    </ul> -->
+                    <select class="form-select" aria-label="Chose status" id="statusButton">
+                        <option selected>Chose Status</option>
+                        <option value="1">In Progress</option>
+                        <option value="2">Done</option>
+                        <option value="3">To Do</option>
+                      </select>
                   </div>
             </div>
             <div class="col-sm">
                 <div class="dropdown">
                     <label for="assigneeButton">Assignee</label>
-                    <button class="btn btn-primary dropdown-toggle" type="button" id="assigneeButton" data-bs-toggle="dropdown" aria-expanded="false">
+                    <!-- <button class="btn btn-primary dropdown-toggle" type="button" id="assigneeButton" data-bs-toggle="dropdown" aria-expanded="false">
                       Assignee
                     </button>
                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                       <li><a class="dropdown-item" href="#">Assignee 1</a></li>
                       <li><a class="dropdown-item" href="#">Assignee 2</a></li>
                       <li><a class="dropdown-item" href="#">Assignee 3</a></li>
-                    </ul>
+                    </ul> -->
+                    <select class="form-select" aria-label="Assign the task" id="assigneeButton">
+                        <option selected>Assignee 1</option>
+                        <option value="1">Assignee One</option>
+                        <option value="2">AssigneeTwo</option>
+                        <option value="3">AssigneeThree</option>
+                      </select>
                   </div>
             </div>
             <div class="col-sm">
                 <label for="dueDate">Due date:</label>
 
+<div class="col-sm">
                 <input type="date" id="dueDate" name="dueDate"
                        value="2021-05-18"
                        min="2021-01-01" max="2022-12-31">
+                       </div>
+                    </div>
             </div>
           </div>
           <div class="row mb-3">
