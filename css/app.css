@@ -1,0 +1,28 @@
+
+.banner {
+    /* border: 1px solid black; */
+    width: 100%;
+    height: auto;
+    overflow: hidden;
+}
+
+.banner img {
+    max-width: 300px;
+    height: auto;
+    display: block;
+}
+
+/* .col {
+    border: 1px solid red;
+} */
+
+svg {
+    height: 30px;
+    width: auto;
+}
+
+.card {
+    /* border: 1px solid green; */
+    margin: 0 auto;
+    float: none;
+}
