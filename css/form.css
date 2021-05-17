@@ -1,0 +1,41 @@
+body {
+    margin: 2em;
+  }
+.header{
+    text-align: center;
+    color: blue
+}
+
+.formLayout{
+    display: grid;
+    row-gap: 50px;
+    align-items: center;
+    
+}
+
+label{
+    font-weight: bold;
+ 
+}
+
+
+.inputTask{
+    
+    max-width:80%;
+}
+
+.addButton{
+    margin: auto;
+    text-align: center;
+
+}
+.taskDescription{
+    justify-self: left;
+    max-width:95%;
+    rows
+
+}
+
+
+
+
