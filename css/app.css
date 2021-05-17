@@ -26,3 +26,8 @@ svg {
     margin: 0 auto;
     float: none;
 }
+
+.list-group-item {
+    border-bottom: none;
+    
+}
