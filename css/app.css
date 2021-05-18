@@ -1,8 +1,8 @@
-
 /* body {
     margin: 2em;
     align-content: center;
 } */
+
 
 /* styling for form */
 
@@ -18,7 +18,6 @@ form {
 
 .formLayout {
     display: grid;
-    row-gap: inherit;
     /* border: 2px blue solid; */
     padding: 10px;
     height: 50%;
@@ -27,14 +26,6 @@ form {
 
 label {
     font-weight: bold;
-}
-
-.dropdownRow {
-    column-gap: 20%;
-}
-
-.inputTask {
-    width: 100%;
 }
 
 .addButton {
@@ -46,7 +37,9 @@ label {
     width: 100%;
 }
 
+
 /* styling for landing page */
+
 .a {
     border: 1px solid blue
 }
@@ -63,6 +56,7 @@ label {
     height: auto;
     display: block;
 }
+
 
 /* .col {
     border: 1px solid red;
@@ -81,5 +75,4 @@ svg {
 
 .list-group-item {
     border-bottom: none;
-    
 }
