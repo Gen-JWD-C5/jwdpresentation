@@ -6,23 +6,27 @@
 
 /* styling for form */
 
-.headerTask {
+
+/* .headerTask {
     text-align: center;
     color: blue
-}
+} */
 
-form {
+
+/* form {
     justify-content: center;
     display: flex;
-}
+} */
 
-.formLayout {
+
+/* .formLayout {
     display: grid;
-    /* border: 2px blue solid; */
+    border: 2px blue solid;
     padding: 10px;
     height: 50%;
     width: 80%;
 }
+*/
 
 label {
     font-weight: bold;
