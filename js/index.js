@@ -35,12 +35,12 @@ class TaskManager {
     //call render function--make it a blank function
     //test the whole code in this file for now
 
-const taskList = new TaskManager();
+// const taskList = new TaskManager();
 
-taskList.addTask("work", "todo", "Kim", "18/06/2021", "I have to finish");
-taskList.addTask("jog", "in progress", "Kim", "18/06/2021", "try to start");
-console.log(taskList.tasks);
-
+// taskList.addTask("work", "todo", "Kim", "18/06/2021", "I have to finish");
+// taskList.addTask("jog", "in progress", "Kim", "18/06/2021", "try to start");
+// console.log(taskList.tasks);
+module.exports.TaskManager = TaskManager;
     //function deleteTask
     //blank function as of now 
 const deleteTask = () => {

@@ -20,12 +20,12 @@ let description = document.querySelector("#description");
 
 
 //Validation of Task Name for being blank or not meeting length requirements
+
 function validateTaskName() 
 {
     let minTaskLength = 5; //to be defined by user
     let maxTaskLength = 100; //to be defined by user
-    
-   
+       
     if (inputTask.value === "")
     {
         inputTask.style.borderColor = "red";
@@ -159,11 +159,11 @@ function validateForm()
      validateDescriptionBox());
  }
 
- function renderTask
+ function renderTask(){}
 
 function addTask() 
 {
-
+console.log("it works");
     if(validateForm())
     {
 
@@ -177,3 +177,4 @@ function addTask()
    
 }
 
+// taskName, status, assignee, dueDate, description = ""
