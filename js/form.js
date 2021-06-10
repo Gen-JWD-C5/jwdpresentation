@@ -1,5 +1,34 @@
 //This file contains functionality related to validating and submitting form.
+class TaskManager {
+    constructor(currentId = 1) {
+        // initialize an empty array called tasks
+        this._tasks = [];
+        //initialize a currentId set to currentId
+        this._currentId = currentId;
+    };
+    //getter for book array
+    get tasks() {
+        return this._tasks;
+    };
+    //setters for book array
+    
+    
+    //function addTask
+    addTask(taskName, status, assignee, dueDate, description = "") {
+        const newTask ={
+            id: this._currentId++,
+            taskName: taskName,
+            status: status,
+            assignee: assignee,
+            dueDate: dueDate,
+            description: description
+        };
 
+        return this._tasks.push(newTask);
+    } ;
+}
+
+console.log(TaskManager);
 //Defining task Button
 let addTaskBtn = document.querySelector("#addTaskBtn");
 addTaskBtn.addEventListener('click',addTask);
@@ -9,15 +38,20 @@ let validationSuccessful = true;
 let validationFailed = false;
 
 //Instantiate a task planner
-//let taskPlanner = new TaskName();
-
+let taskPlanner = new TaskManager();
+// Capture form inputs
+let inputTask = document.querySelector("#inputTask");
+let statusDropdown = document.querySelector("#statusDropdown");
+let assigneeDropdown = document.querySelector("#inputAssignee");
+let dueDate = document.querySelector("#dueDate");
+let description = document.querySelector("#description");
 
 //Validation of Task Name for being blank or not meeting length requirements
+
 function validateTaskName() 
 {
     let minTaskLength = 5; //to be defined by user
     let maxTaskLength = 100; //to be defined by user
-    let inputTask = document.querySelector("#inputTask");
    
     if (inputTask.value === "")
     {
@@ -44,7 +78,7 @@ function validateTaskName()
 //Validation of Status
 function validateStatus()
 {
-    let statusDropdown = document.querySelector("#statusDropdown");
+    
     let errMsg = document.querySelector("#statusErrMsg");
    
     if(statusDropdown.value === "Choose Status")
@@ -64,7 +98,7 @@ function validateStatus()
 //Validation of Assignee
 function validateAssignee()
 {
-    let assigneeDropdown = document.querySelector("#inputAssignee");
+    
     let minAssigneeLength = 5;//defined by user
     let maxAssigneeLength = 15;//defined by user
     let errMsg = document.querySelector("#assigneeErrMsg");
@@ -94,7 +128,7 @@ function validateAssignee()
 //Validation of Due Date
 function validateDueDate()
 {
-    let dueDate = document.querySelector("#dueDate");
+    
     let errMsg = document.querySelector("#dateErrMsg");
     let inputDate = new Date(dueDate.value);
     let todaysDate = new Date();
@@ -115,7 +149,7 @@ function validateDueDate()
 
 function validateDescriptionBox()
 {
-    let description = document.querySelector("#description");
+    
     let errMsg = document.querySelector("#descriptionErrMsg");
     let minDescLength = 5; //defined by user
     let maxDescLength = 200; //defined by user
@@ -154,12 +188,14 @@ function validateForm()
 
 function addTask() 
 {
-
+console.log("it works");
     if(validateForm())
     {
     //create a new object by storing the values and call the add task function
     //alert("FORM validated!!!")
-    //taskPlanner.addTask();
+    taskPlanner.addTask(inputTask.value, statusDropdown.value, assigneeDropdown.value, dueDate.value, description.value);
+    console.log(taskPlanner.tasks)
     }
 }
 
+// taskName, status, assignee, dueDate, description = ""
