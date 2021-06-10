@@ -13,7 +13,7 @@
     <title>Task Planner</title>
 </head>
 
-<body>
+<body> 
     <header>
         <div class="banner">
             <img src="./images/busy1.png" class="img-fluid mx-auto d-block" alt="page logo" />
@@ -31,45 +31,46 @@
                 </button>
 
                 <!-- Modal -->
-                <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="formLabel" aria-hidden="true" id="taskform">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="formLabel">Add Task</h5>
+                <div class="modal fade " tabindex="-1" role="dialog" aria-labelledby="formLabel" aria-hidden="true" id="taskform">
+                    <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content my-shadow-style">
+                            <div class="modal-header text-center d-block ">
+                                <h5 class="modal-title "  id="formLabel">Add Task</h5>
                                 <!-- <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button> -->
                             </div>
 
-                            <div class="modal-body">
+                            <div class="modal-body container justify-content-center ">
                                 <!-- form -->
 
-                                <form action="">
+                                <form action="" class = "">
                                     <div class="formLayout">
                                         <div class="row">
                                             <div class="col-sm">
                                                 <label for="inputTask" class="form-label">Task</label>
-                                                <input type="text" class="inputTask form-control" id="inputTask" aria-label="Task" placeholder="Name of Task" />
+                                                <div id="errMsg"></div>
+                                                <input type="text" class="inputTask form-control" id="inputTask" aria-label="Task" placeholder="Name of Task" required />
                                             </div>
                                         </div>
 
                                         <div class="row dropdownRow">
                                             <div class="col-sm">
                                                 <div class="dropdown">
-                                                    <label for="statusButton">Status</label>
+                                                    <label for="statusDropdown" class = "pt-2">Status</label>
 
-                                                    <select class="form-select" aria-label="Chose status" id="statusButton">
-                                                        <option selected>Chose Status</option>
+                                                    <select class="form-select" aria-label="Choose status" id="statusDropdown">
+                                                        <option selected>Choose Status</option>
                                                         <option value="1">To Do</option>
                                                         <option value="2">In Progress</option>
                                                         <option value="3">Review</option>
-                                                        <option value="">Done</option>
+                                                        <option value="4">Done</option>
                                                     </select>
                                                 </div>
                                             </div>
                                             <div class="col-sm">
                                                 <div class="dropdown">
-                                                    <label for="assigneeButton">Assignee</label>
+                                                    <label for="assigneeDropdown"class = "pt-2">Assignee</label>
 
-                                                    <select class="form-select" aria-label="Assign the task" id="assigneeButton">
+                                                    <select class="form-select" aria-label="Assign the task" id="assigneeDropdown">
                                                         <option selected>Assignee</option>
                                                         <option value="1">Assignee 1</option>
                                                         <option value="2">Assignee 2</option>
@@ -78,7 +79,7 @@
                                                 </div>
                                             </div>
                                             <div class="col-sm">
-                                                <label for="dueDate">Due date</label>
+                                                <label for="dueDate" class = "pt-2">Due date</label>
 
                                                 <div class="col-sm">
                                                     <input type="date" id="dueDate" name="dueDate" class="form-control" value="2021-05-18" min="2021-01-01" max="2022-12-31" aria-label="Due Date" />
@@ -87,7 +88,7 @@
                                         </div>
                                         <div class="row mb-3">
                                             <div class="col-sm">
-                                                <label for="description">Description</label>
+                                                <label for="description" class = "pt-2">Description</label>
                                                 <textarea class="form-control taskDescription" placeholder="Describe the task" id="description"></textarea>
                                             </div>
                                         </div>
@@ -96,11 +97,12 @@
                                 <!-- form ends -->
                             </div>
 
-                            <div class="modal-footer">
-                                <button type="button " class="btn btn-secondary" data-bs-dismiss="modal">
-                                    Close
+                            <div class="modal-footer ">
+                                <button type="button " class="btn btn-primary" id = "addTaskBtn">Add</button>
+                                <button type="button " class="btn btn-secondary" data-bs-dismiss="modal" id="cancelBtn">
+                                    Cancel
                                 </button>
-                                <button type="button " class="btn btn-primary">Add</button>
+                                
                             </div>
                         </div>
                     </div>
@@ -412,7 +414,7 @@
 
     <!-- Option 1: Bootstrap Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
-
+    <script type="text/JavaScript" src="./js/form.js"></script>
     <!-- Option 2: Separate Popper and Bootstrap JS -->
     <!--
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
