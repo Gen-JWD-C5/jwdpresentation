@@ -40,7 +40,7 @@ class TaskManager {
 // taskList.addTask("work", "todo", "Kim", "18/06/2021", "I have to finish");
 // taskList.addTask("jog", "in progress", "Kim", "18/06/2021", "try to start");
 // console.log(taskList.tasks);
-module.exports.TaskManager = TaskManager;
+//module.exports.TaskManager = TaskManager;
     //function deleteTask
     //blank function as of now 
 const deleteTask = () => {
