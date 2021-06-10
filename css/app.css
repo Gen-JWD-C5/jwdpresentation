@@ -86,3 +86,6 @@ svg {
     border-bottom: none;
 }
 
+.error-msg-style{
+    font-size: 0.75rem;
+}

@@ -47,8 +47,8 @@
                                         <div class="row">
                                             <div class="col-sm">
                                                 <label for="inputTask" class="form-label">Task</label>
-                                                <div id="errMsg"></div>
                                                 <input type="text" class="inputTask form-control" id="inputTask" aria-label="Task" placeholder="Name of Task" required />
+                                                <div id="errMsg" class = "error-msg-style"></div>
                                             </div>
                                         </div>
 
@@ -65,18 +65,14 @@
                                                         <option value="4">Done</option>
                                                     </select>
                                                 </div>
+                                                <div id="statusErrMsg" class = "error-msg-style"></div>
                                             </div>
                                             <div class="col-sm">
-                                                <div class="dropdown">
-                                                    <label for="assigneeDropdown"class = "pt-2">Assignee</label>
-
-                                                    <select class="form-select" aria-label="Assign the task" id="assigneeDropdown">
-                                                        <option selected>Assignee</option>
-                                                        <option value="1">Assignee 1</option>
-                                                        <option value="2">Assignee 2</option>
-                                                        <option value="3">Assignee 3</option>
-                                                    </select>
-                                                </div>
+                                                <!-- <div class="dropdown"> -->
+                                                    <label for="inputAssignee"class = "pt-2">Assignee</label>
+                                                    <input type="text" class="inputTask form-control" id="inputAssignee" aria-label="Task" placeholder="Assignee" required />
+                                                    <div id="assigneeErrMsg" class = "error-msg-style"></div>
+                                                <!-- </div> -->
                                             </div>
                                             <div class="col-sm">
                                                 <label for="dueDate" class = "pt-2">Due date</label>
@@ -84,12 +80,14 @@
                                                 <div class="col-sm">
                                                     <input type="date" id="dueDate" name="dueDate" class="form-control" value="2021-05-18" min="2021-01-01" max="2022-12-31" aria-label="Due Date" />
                                                 </div>
+                                                <div id="dateErrMsg" class = "error-msg-style"></div>
                                             </div>
                                         </div>
                                         <div class="row mb-3">
                                             <div class="col-sm">
                                                 <label for="description" class = "pt-2">Description</label>
                                                 <textarea class="form-control taskDescription" placeholder="Describe the task" id="description"></textarea>
+                                                <div id="descriptionErrMsg" class = "error-msg-style"></div>
                                             </div>
                                         </div>
                                     </div>
