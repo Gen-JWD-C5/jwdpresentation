@@ -1,7 +1,7 @@
 // This file deals with class definition for task planner
 //Structure for class:
 class TaskManager {
-    constructor(currentId = 1) {
+    constructor(currentId = 0) {
         // initialize an empty array called tasks
         this._tasks = [];
         //initialize a currentId set to currentId
@@ -17,7 +17,7 @@ class TaskManager {
     //function addTask
     addTask(taskName, status, assignee, dueDate, description = "") {
         const newTask ={
-            id: this._currentId++,
+            id: ++this._currentId,
             taskName: taskName,
             status: status,
             assignee: assignee,
@@ -52,3 +52,4 @@ const deleteTask = () => {
 const updateStatus = () => {
 
 }
+export{TaskManager};
