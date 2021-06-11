@@ -1,5 +1,5 @@
 //This file contains functionality related to validating and submitting form.
-import {TaskManager} from './index.js';
+import {TaskManager, createTaskHtml} from './index.js';
 //Defining task Button
 let addTaskBtn = document.querySelector("#addTaskBtn");
 addTaskBtn.addEventListener('click',addTask);
@@ -166,7 +166,6 @@ function addTask()
 console.log("it works");
     if(validateForm())
     {
-
         
     //create a new object by storing the values and call the add task function
     //alert("FORM validated!!!")
