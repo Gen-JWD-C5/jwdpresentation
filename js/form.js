@@ -159,7 +159,7 @@ function validateForm()
      validateDescriptionBox());
  }
 
- function renderTask(){}
+
 
 function addTask() 
 {
@@ -172,6 +172,7 @@ console.log("it works");
     taskPlanner.render();
     let form = document.querySelector("#form");
     form.reset() ;
+    
     }
 
 }
