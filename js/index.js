@@ -1,4 +1,6 @@
 // This file deals with class definition for task planner
+
+
 //Structure for class:
 class TaskManager {
     constructor(currentId = 0) {
@@ -28,19 +30,44 @@ class TaskManager {
         return this._tasks.push(newTask);
     } ;
 }
-//arguments: taskName,status,assignee,dueDate,Description=""
-    //default values for args
-    //create instance of book array
-    //push it to this._booksList
-    //call render function--make it a blank function
-    //test the whole code in this file for now
+rendor()
+{
+    let taskHtmlListToDo = [];
+    let taskHtmlListInProgress = [];
+    let taskHtmlListReview = [];
+    let taskHtmlListDone = [];
+    for(let task of this._tasks)
+    {
+        let date = new Date(task.dueDate);
+        //let formattedDate = convert date to string
+        let taskHtml = createTaskHtml();
+        switch(task.status)
+        {
+           case 'To Do':
+                taskHtmlListToDo.push(taskHtml);
+                break;
+            case 'In Progress':
+                taskHtmlListInProgress.push(taskHtml);
+                break;
+            case 'Reveiw':
+                taskHtmlListReview.push(taskHtml);
+                break
+            case 'Done':
+                taskHtmlListDone.push(taskHtml);
+                break;
 
-// const taskList = new TaskManager();
+        }
+    }
+    let todoColumn = document.querySelector("#todoColumn");
+    todoColumn.innerHTML = taskHtmlListToDo.join('/n');
+    let inProgressColumn = document.querySelector("#inProgressColumn");
+    inProgressColumn = taskHtmlListInProgress.join('/n');
+    let reviewColumn = document.querySelector("#reviewColumn");
+    reviewColumn = taskHtmlListReview.join('/n');
+    let doneColumn = document.querySelector("#doneColumn");
+    doneColumn = taskHtmlListDone.join('/n');
+}
 
-// taskList.addTask("work", "todo", "Kim", "18/06/2021", "I have to finish");
-// taskList.addTask("jog", "in progress", "Kim", "18/06/2021", "try to start");
-// console.log(taskList.tasks);
-//module.exports.TaskManager = TaskManager;
     //function deleteTask
     //blank function as of now 
 const deleteTask = () => {

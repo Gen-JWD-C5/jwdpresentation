@@ -165,16 +165,15 @@ function addTask()
 {
 console.log("it works");
     if(validateForm())
-    {
-
-        
+    {        
     //create a new object by storing the values and call the add task function
-    //alert("FORM validated!!!")
     taskPlanner.addTask(inputTask.value,statusDropdown.value,inputAssignee.value,dueDate.value,description.value);
     console.log(taskPlanner.tasks);
-    renderTask(taskPlanner.tasks);
+    taskPlanner.render();
+    let form = document.querySelector("#form");
+    form.reset() ;
     }
-   
+
 }
 
 // taskName, status, assignee, dueDate, description = ""
