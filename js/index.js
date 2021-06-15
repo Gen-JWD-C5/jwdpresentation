@@ -5,37 +5,19 @@ function createTaskHtml(taskName, status, assignee, dueDate, description, taskId
   const html = `<li class="list-group-item">
     <div class="row mx-auto ">
       <div class="col d-flex justify-content-center">
-        <div class="card">
+        <div id="${taskId}" class="card">
           <div class="card-body">
             <div class="row">
               <div class="col">
-                <div class="btn-group">
-                  <div class="dropdown">
-                    <button
-                      class="btn btn-sm btn-secondary dropdown-toggle"
-                      type="button"
-                      data-bs-toggle="dropdown"
-                      aria-expanded="false"
-                    >
-                      ${status}
-                    </button>
-                    <ul id="statusOption" class="dropdown-menu">
-                      <li>
-                        <a class="dropdown-item" href="#">To Do</a>
-                      </li>
-                      <li>
-                        <a class="dropdown-item" href="#"
-                          >In Progress</a
-                        >
-                      </li>
-                      <li>
-                        <a class="dropdown-item" href="#">Review</a>
-                      </li>
-                      <li>
-                        <a class="dropdown-item" href="#">Done</a>
-                      </li>
-                    </ul>
-                  </div>
+                <div >
+                <button
+                type="button "
+                class="btn btn-outline-secondary btn-sm"
+                id="updateTaskBtn"
+                data-bs-dismiss="modal"
+              >
+                Update
+              </button>
                 </div>
               </div>
               <div class="col text-end">
@@ -60,7 +42,7 @@ function createTaskHtml(taskName, status, assignee, dueDate, description, taskId
               </div>
             </div>
 
-            <h5 class="card-title mt-2 id =${taskId}">${taskName}</h5>
+            <h5 class="card-title mt-2">${taskName}</h5>
             <p class="card-text">
               ${description}
             </p>
