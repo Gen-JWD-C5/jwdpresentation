@@ -171,10 +171,11 @@ console.log("it works");
     console.log(taskPlanner.tasks);
     taskPlanner.render();
     let form = document.querySelector("#form");
-    form.reset() ;
-    
+    form.reset();
+
     }
 
 }
+
 
 // taskName, status, assignee, dueDate, description = ""
