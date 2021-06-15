@@ -237,6 +237,12 @@ function updateTask(event,updateTaskId){
     document.getElementById('updateTaskBtn').style.display = "none";
 
     document.getElementById('addTaskBtn').style.display = "block";
+    
+    let hideUpdate = document.querySelector('#updateCardBtn');
+    if(document.querySelector("#statusDropdown").value == 'Done'){
+    hideUpdate.style.display = 'none';
+    }
+
     let form = document.querySelector("#form");
     form.reset();
 
