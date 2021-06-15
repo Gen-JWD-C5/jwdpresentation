@@ -149,6 +149,7 @@ function validateDescriptionBox()
     }    
 }
 
+//helper function to validate form fields
 function validateForm()
 {
     
@@ -160,7 +161,7 @@ function validateForm()
  }
 
 
-
+//event handler for add task button in form
 function addTask() 
 {
 console.log("it works");
@@ -179,3 +180,65 @@ console.log("it works");
 
 
 // taskName, status, assignee, dueDate, description = ""
+let todoColumn = document.querySelector("#doList");
+todoColumn.addEventListener("click", displayUpdateTask);
+let inProgressColumn = document.querySelector("#inProgressList");
+inProgressColumn.addEventListener("click", displayUpdateTask);
+let reviewColumn = document.querySelector("#reviewList");
+reviewColumn.addEventListener("click", displayUpdateTask);
+let doneColumn = document.querySelector("#doneList");
+doneColumn.addEventListener("click", displayUpdateTask);
+
+
+//helper function to populate form fields with selected task card
+function populateFormToBeUpdated(task){
+    console.log("in populateFormToBeUpdated ");
+    console.log(task);
+    inputTask.value = task.taskName;
+    
+    statusDropdown.value = task.status;
+    inputAssignee.value = task.assignee;
+    dueDate.value = task.dueDate;
+    description.value = task.description;
+
+}
+
+//eventhandler for update button in cards
+function displayUpdateTask(event){
+    //alert(event.target.parentElement.parentElement.parentElement.parentElement.parentElement.id);
+  //  let taskForm = document.querySelector("#taskform");
+
+    //document.getElementById('addTaskBtn').hidden = true;
+    document.getElementById('addTaskBtn').style.display = "none";
+    document.getElementById('updateTaskBtn').style.display = "block";
+    let updateTaskId = Number(event.target.parentElement.parentElement.parentElement.parentElement.parentElement.id);
+    console.log("in updateTask task id is " + updateTaskId);
+    let task = taskPlanner.getTaskById(updateTaskId);
+    populateFormToBeUpdated(task);
+    let updateTaskBtn = document.querySelector("#updateTaskBtn");
+    //updateTaskBtn.addEventListener("click",updateTask(updateTaskId))  
+    updateTaskBtn.addEventListener("click",(event) =>{updateTask(event,updateTaskId)}) ; 
+
+//    let form = document.querySelector("#form");
+  
+    
+
+}
+
+//event handler for update button in form
+function updateTask(event,updateTaskId){
+    console.log("Updating Task now");
+    if(validateForm())
+    {        
+    //create a new object by storing the values and call the add task function
+    taskPlanner.updateTask(updateTaskId,inputTask.value,statusDropdown.value,inputAssignee.value,dueDate.value,description.value);
+    console.log(taskPlanner.tasks);
+    taskPlanner.render();
+    document.getElementById('updateTaskBtn').style.display = "none";
+
+    document.getElementById('addTaskBtn').style.display = "block";
+    let form = document.querySelector("#form");
+    form.reset();
+
+    }
+}

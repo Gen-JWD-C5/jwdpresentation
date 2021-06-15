@@ -13,8 +13,10 @@ function createTaskHtml(taskName, status, assignee, dueDate, description, taskId
                 <button
                 type="button "
                 class="btn btn-outline-secondary btn-sm"
-                id="updateTaskBtn"
+                id="updateCardBtn"
                 data-bs-dismiss="modal"
+                data-bs-toggle="modal"
+            data-bs-target="#taskform"
               >
                 Update
               </button>
@@ -142,6 +144,35 @@ class TaskManager {
       let doneColumn = document.querySelector("#doneList");
       doneColumn.innerHTML = taskHtmlListDone.join();
     };
+    
+    getTaskById(taskId){
+
+      for(let task of this._tasks){
+        if(task.id === taskId){
+          console.log("found task");
+          return task;
+        }
+
+      }
+      console.log("task not found");
+      return null;
+    }
+    updateTask(id,taskName, status, assignee, dueDate, description = "") 
+    {
+      console.log("I m in update task!!!!!!!")
+      let taskToBeUpdated = this.getTaskById(id);
+        
+      taskToBeUpdated.id =  id;
+      taskToBeUpdated.taskName= taskName;
+      taskToBeUpdated.status= status;
+      taskToBeUpdated.assignee= assignee;
+      taskToBeUpdated.dueDate= dueDate;
+      taskToBeUpdated.description= description;
+      console.log(this._tasks);
+        
+
+        //return this._tasks.push(newTask);
+    } ;
 
 }
 export{TaskManager};
