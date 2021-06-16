@@ -30,7 +30,7 @@
 
     <!-- add task button and assignee filter -->
 
-    <div class="container my-5">
+    <div class="container my-5" >
       <!-- Button trigger modal -->
       <div class="row justify-content-evenly">
         <div class="col d-flex justify-content-center">
@@ -77,7 +77,7 @@
                             class="inputTask form-control"
                             id="inputTask"
                             aria-label="Task"
-                            placeholder="Name of Task"
+                            placeholder="Task Name should be 5-100 Characters"
                             required
                           />
                           <div id="errMsg" class="error-msg-style"></div>
@@ -133,7 +133,7 @@
                               id="dueDate"
                               name="dueDate"
                               class="form-control"
-                              value="2021-05-18"
+                              value="dd/mm/yyyy"
                               min="2021-01-01"
                               max="2022-12-31"
                               aria-label="Due Date"
@@ -168,7 +168,7 @@
                     type="button "
                     class="btn btn-primary hidden"
                     id="updateTaskBtn"
-                    data-bs-dismiss="modal"
+                    
                   >
                     Update
                   </button>
@@ -176,7 +176,7 @@
                     type="button "
                     class="btn btn-primary"
                     id="addTaskBtn"
-                    data-bs-dismiss="modal"
+                    
                   >
                     Add
                   </button>
@@ -217,11 +217,11 @@
 
       <!-- cards layout -->
 
-      <div class="row row-cols-1 row-cols-md-2 row-cols-xl-4 my-5 d-flex justify-content-center"> 
+      <div class="row row-cols-1 row-cols-md-2 row-cols-xl-4 my-5 d-flex justify-content-center task-board"> 
         
         <!-- TO DO  COLUMN -->
 
-        <div id="todoColumn" class="col">
+        <div id="todoColumn" class="col  task-column">
           <h2 class="text-center">TO DO</h2>
           <ul id="doList" class="list-group list-group-flush">
               <!-- start of card list  -->
@@ -231,7 +231,7 @@
 
         <!-- IN PROGRESS COLUMN -->
 
-        <div id="inProgressColumn" class="col">
+        <div id="inProgressColumn" class="col task-column">
           <h2 class="text-center">IN PROGRESS</h2>
           <ul id="inProgressList" class="list-group list-group-flush">
               <!-- start of card list  -->
@@ -241,7 +241,7 @@
 
         <!-- REVIEW COLUMN -->
 
-        <div id="reviewColumn" class="col">
+        <div id="reviewColumn" class="col  task-column">
           <h2 class="text-center">REVIEW</h2>
           <ul id="reviewList" class="list-group list-group-flush">
               <!-- start of card list -->
@@ -251,7 +251,7 @@
 
         <!-- DONE COLUMN -->
 
-        <div id="doneColumn" class="col">
+        <div id="doneColumn" class="col hide-delButton">
             <h2 class="text-center">DONE</h2>
             <ul id="doneList" class="list-group list-group-flush">
                 <!-- start of class list -->

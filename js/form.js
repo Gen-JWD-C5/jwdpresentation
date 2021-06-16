@@ -13,10 +13,17 @@ let taskPlanner = new TaskManager();
 
 //Extract Form input
 let inputTask = document.querySelector("#inputTask");
+//inputTask.addEventListener("input",validateTaskName);
+inputTask.addEventListener("keyup",validateTaskName);
 let statusDropdown = document.querySelector("#statusDropdown");
+//statusDropdown.addEventListener("input",validateStatus);
+statusDropdown.addEventListener("keyup",validateStatus);
 let inputAssignee = document.querySelector("#inputAssignee");
+inputAssignee.addEventListener("keyup",validateAssignee);
 let dueDate = document.querySelector("#dueDate");
+dueDate.addEventListener("keyup",validateDueDate);
 let description = document.querySelector("#description");
+description.addEventListener("keyup",validateDescriptionBox);
 
 
 //Validation of Task Name for being blank or not meeting length requirements
@@ -173,7 +180,7 @@ console.log("it works");
     taskPlanner.render();
     let form = document.querySelector("#form");
     form.reset();
-
+    
     }
 
 }
@@ -238,10 +245,10 @@ function updateTask(event,updateTaskId){
 
     document.getElementById('addTaskBtn').style.display = "block";
     
-    let hideUpdate = document.querySelector('#updateCardBtn');
-    if(document.querySelector("#statusDropdown").value == 'Done'){
-    hideUpdate.style.display = 'none';
-    }
+    // let hideUpdate = document.querySelector('#updateCardBtn');
+    // if(document.querySelector("#statusDropdown").value == 'Done'){
+    // hideUpdate.style.display = 'none';
+    // }
 
     let form = document.querySelector("#form");
     form.reset();

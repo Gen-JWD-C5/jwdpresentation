@@ -3,9 +3,9 @@
 function createTaskHtml(taskName, status, assignee, dueDate, description, taskId)
 {
   const html = `<li class="list-group-item">
-    <div class="row mx-auto ">
+    <div class="row mx-auto">
       <div class="col d-flex justify-content-center">
-        <div id="${taskId}" class="card">
+        <div id="${taskId}" class="card card-style rounded-0">
           <div class="card-body">
             <div class="row">
               <div class="col">
@@ -143,6 +143,7 @@ class TaskManager {
       reviewColumn.innerHTML = taskHtmlListReview.join();
       let doneColumn = document.querySelector("#doneList");
       doneColumn.innerHTML = taskHtmlListDone.join();
+      
     };
     
     getTaskById(taskId){
