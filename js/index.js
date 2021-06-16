@@ -130,6 +130,7 @@ class TaskManager {
                 taskHtmlListReview.push(taskHtml);
                 break
             case "Done":
+              console.log("in done")
                 taskHtmlListDone.push(taskHtml);
                 break;
 
@@ -150,7 +151,7 @@ class TaskManager {
 
       for(let task of this._tasks){
         if(task.id === taskId){
-          console.log("found task");
+          console.log("get task by id::found task  name is " + task.taskName);
           return task;
         }
 
@@ -160,8 +161,10 @@ class TaskManager {
     }
     updateTask(id,taskName, status, assignee, dueDate, description = "") 
     {
-      console.log("I m in update task!!!!!!!")
+      console.log("I m in update task class fn!!!!!!!")
+      console.log("in class update task id" +id);
       let taskToBeUpdated = this.getTaskById(id);
+      console.log("in class update task is" + taskToBeUpdated)
         
       taskToBeUpdated.id =  id;
       taskToBeUpdated.taskName= taskName;

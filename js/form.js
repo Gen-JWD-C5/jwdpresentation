@@ -8,6 +8,9 @@ addTaskBtn.addEventListener('click',addTask);
 let validationSuccessful = true;
 let validationFailed = false;
 
+//to sustain its value in anonymous function when a task is updated
+let updateTaskId = 0;
+
 //Instantiate a task planner
 let taskPlanner = new TaskManager();
 
@@ -172,6 +175,10 @@ function validateForm()
 function addTask() 
 {
 console.log("it works");
+document.getElementById('updateTaskBtn').style.display = "none";
+document.getElementById('addTaskBtn').hidden = false;
+
+    document.getElementById('addTaskBtn').style.display = "block";
     if(validateForm())
     {        
     //create a new object by storing the values and call the add task function
@@ -216,15 +223,22 @@ function displayUpdateTask(event){
   //  let taskForm = document.querySelector("#taskform");
 
     //document.getElementById('addTaskBtn').hidden = true;
+
+
+    //changes modal form to display update button
     document.getElementById('addTaskBtn').style.display = "none";
     document.getElementById('updateTaskBtn').style.display = "block";
-    let updateTaskId = Number(event.target.parentElement.parentElement.parentElement.parentElement.parentElement.id);
-    console.log("in updateTask task id is " + updateTaskId);
+    //grab task id from card body
+     updateTaskId = Number(event.target.parentElement.parentElement.parentElement.parentElement.parentElement.id);
+    console.log("*********in displayupdateTask task id is " + updateTaskId);
     let task = taskPlanner.getTaskById(updateTaskId);
     populateFormToBeUpdated(task);
+
+    //capturing form button for updation in database
     let updateTaskBtn = document.querySelector("#updateTaskBtn");
     //updateTaskBtn.addEventListener("click",updateTask(updateTaskId))  
-    updateTaskBtn.addEventListener("click",(event) =>{updateTask(event,updateTaskId)}) ; 
+    console.log("before update eventlistenere function update task id is" + updateTaskId);
+    updateTaskBtn.addEventListener("click", function(){updateTask(updateTaskId);}) ; 
 
 //    let form = document.querySelector("#form");
   
@@ -233,17 +247,17 @@ function displayUpdateTask(event){
 }
 
 //event handler for update button in form
-function updateTask(event,updateTaskId){
-    console.log("Updating Task now");
+function updateTask(updateTaskId){
+    console.log("Updating Task now after update button pressed updateTaskId is " + updateTaskId);
     if(validateForm())
     {        
     //create a new object by storing the values and call the add task function
     taskPlanner.updateTask(updateTaskId,inputTask.value,statusDropdown.value,inputAssignee.value,dueDate.value,description.value);
     console.log(taskPlanner.tasks);
     taskPlanner.render();
-    document.getElementById('updateTaskBtn').style.display = "none";
+     document.getElementById('updateTaskBtn').style.display = "none";
 
-    document.getElementById('addTaskBtn').style.display = "block";
+     document.getElementById('addTaskBtn').style.display = "block";
     
     // let hideUpdate = document.querySelector('#updateCardBtn');
     // if(document.querySelector("#statusDropdown").value == 'Done'){
