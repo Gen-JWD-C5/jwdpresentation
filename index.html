@@ -36,6 +36,7 @@
         <div class="col d-flex justify-content-center">
           <button
             type="button"
+            id="addTaskBtnForModal"
             class="btn btn-primary px-5"
             data-bs-toggle="modal"
             data-bs-target="#taskform"
@@ -54,8 +55,8 @@
           >
             <div class="modal-dialog modal-dialog-centered">
               <div class="modal-content my-shadow-style">
-                <div class="modal-header text-center d-block">
-                  <h5 class="modal-title" id="formLabel">Add Task</h5>
+                <div class="modal-header d-block text-center">
+                  <h5 class="modal-title " id="formLabel">Add Task</h5>
                   <!-- <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button> -->
                 </div>
 
@@ -105,7 +106,7 @@
                           </div>
                           <div id="statusErrMsg" class="error-msg-style"></div>
                         </div>
-                        <div class="col-sm">
+                        <div class="col-sm-4">
                           <!-- <div class="dropdown"> -->
                           <label for="inputAssignee" class="pt-2"
                             >Assignee</label
@@ -115,7 +116,7 @@
                             class="inputTask form-control"
                             id="inputAssignee"
                             aria-label="Task"
-                            placeholder="Assignee"
+                            placeholder="5-15 characters"
                             required
                           />
                           <div
@@ -133,7 +134,7 @@
                               id="dueDate"
                               name="dueDate"
                               class="form-control"
-                              value="dd/mm/yyyy"
+                              placeholder="dd/mm/yyyy"
                               min="2021-01-01"
                               max="2022-12-31"
                               aria-label="Due Date"
@@ -149,7 +150,7 @@
                           >
                           <textarea
                             class="form-control taskDescription"
-                            placeholder="Describe the task"
+                            placeholder="Describe the task (5-200 Characters)"
                             id="description"
                           ></textarea>
                           <div
@@ -178,14 +179,15 @@
                     class="btn btn-primary"
                     id="addTaskBtn"
                     
+                    disabled
                   >
                     Add
                   </button>
                   <button
-                    type="button "
+                    type="reset"
                     class="btn btn-secondary"
                     data-bs-dismiss="modal"
-                    id="cancelBtn"
+                    id="clearBtn"
                   >
                     Close
                   </button>

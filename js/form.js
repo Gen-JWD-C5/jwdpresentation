@@ -1,36 +1,50 @@
 //This file contains functionality related to validating and submitting form.
+
 import {TaskManager} from './index.js';
-//Defining task Button
+
+//Defining task Button from form
 let addTaskBtn = document.querySelector("#addTaskBtn");
 addTaskBtn.addEventListener('click',addTask);
 
-//return values for validate functions
+
+
+//return values for  form input validate functions for code readability
 let validationSuccessful = true;
 let validationFailed = false;
 
-//to sustain its value in anonymous function when a task is updated
+//to sustain its value in event handler function for update button in form when a task is updated
 let updateTaskId = 0;
 
 //Instantiate a task planner
 let taskPlanner = new TaskManager();
 
-//Extract Form input
+//Extract Form input fields
+//used to populate form for updating tasks
+//used to enable add button only when all fields are filled
 let inputTask = document.querySelector("#inputTask");
-//inputTask.addEventListener("input",validateTaskName);
-inputTask.addEventListener("keyup",validateTaskName);
-let statusDropdown = document.querySelector("#statusDropdown");
-//statusDropdown.addEventListener("input",validateStatus);
-statusDropdown.addEventListener("keyup",validateStatus);
-let inputAssignee = document.querySelector("#inputAssignee");
-inputAssignee.addEventListener("keyup",validateAssignee);
-let dueDate = document.querySelector("#dueDate");
-dueDate.addEventListener("keyup",validateDueDate);
-let description = document.querySelector("#description");
-description.addEventListener("keyup",validateDescriptionBox);
+inputTask.addEventListener("input",enableSubmitButton);
 
+let statusDropdown = document.querySelector("#statusDropdown");
+statusDropdown.addEventListener("input",enableSubmitButton);
+
+let inputAssignee = document.querySelector("#inputAssignee");
+inputAssignee.addEventListener("input",enableSubmitButton);
+
+let dueDate = document.querySelector("#dueDate");
+dueDate.addEventListener("input",enableSubmitButton);
+
+let description = document.querySelector("#description");
+description.addEventListener("input",enableSubmitButton);
+
+//it will enable add button on form only when all fields have a value
+function enableSubmitButton(){
+    if(inputTask.value && statusDropdown.value && inputAssignee.value && dueDate.value && description.value){
+        //enable button
+        document.getElementById('addTaskBtn').disabled = false;
+    }
+}
 
 //Validation of Task Name for being blank or not meeting length requirements
-
 function validateTaskName() 
 {
     let minTaskLength = 5; //to be defined by user
@@ -42,6 +56,7 @@ function validateTaskName()
         let errMsg = document.querySelector("#errMsg");
         errMsg.style.color = "red";
         errMsg.innerHTML = `Please provide a Task Name.`;
+        console.log(`Please provide a Task Name.--------------`);
         return validationFailed;
     }else if((inputTask.value.length < minTaskLength) || (inputTask.value.length > maxTaskLength))
     {
@@ -113,9 +128,12 @@ function validateDueDate()
 {
     
     let errMsg = document.querySelector("#dateErrMsg");
+    console.log("Due date is " + dueDate.value);
     let inputDate = new Date(dueDate.value);
     let todaysDate = new Date();
-    if(inputDate.setHours(0,0,0,0) < todaysDate.setHours(0,0,0,0))
+
+    if((dueDate.value === "") || 
+    (inputDate.setHours(0,0,0,0) < todaysDate.setHours(0,0,0,0)))
     {
         dueDate.style.borderColor = "red";
         errMsg.style.color = "red";
@@ -130,6 +148,7 @@ function validateDueDate()
 
 }
 
+//validate description field
 function validateDescriptionBox()
 {
     
@@ -159,7 +178,7 @@ function validateDescriptionBox()
     }    
 }
 
-//helper function to validate form fields
+//helper function to validate form fields while adding and updating tasks
 function validateForm()
 {
     
@@ -174,37 +193,39 @@ function validateForm()
 //event handler for add task button in form
 function addTask() 
 {
-console.log("it works");
-document.getElementById('updateTaskBtn').style.display = "none";
-document.getElementById('addTaskBtn').hidden = false;
+console.log("in add task it works");
 
-    document.getElementById('addTaskBtn').style.display = "block";
     if(validateForm())
     {        
-    //create a new object by storing the values and call the add task function
+    //call the add task function to add to task array
     taskPlanner.addTask(inputTask.value,statusDropdown.value,inputAssignee.value,dueDate.value,description.value);
     console.log(taskPlanner.tasks);
+    //render tasks on page
     taskPlanner.render();
-    let form = document.querySelector("#form");
-    form.reset();
-    
+    clearForm();
+    //disable add button to make form ready for adding next task
+    document.getElementById('addTaskBtn').disabled = true;
     }
 
 }
 
 
-// taskName, status, assignee, dueDate, description = ""
+// To capture clicks for update and delete buttons on cards
+//capture clicks on 4 columns and get event.target.id of buttons
 let todoColumn = document.querySelector("#doList");
 todoColumn.addEventListener("click", displayUpdateTask);
+
 let inProgressColumn = document.querySelector("#inProgressList");
 inProgressColumn.addEventListener("click", displayUpdateTask);
+
 let reviewColumn = document.querySelector("#reviewList");
 reviewColumn.addEventListener("click", displayUpdateTask);
+
 let doneColumn = document.querySelector("#doneList");
 doneColumn.addEventListener("click", displayUpdateTask);
 
 
-//helper function to populate form fields with selected task card
+//helper function to populate form fields with selected task card to update
 function populateFormToBeUpdated(task){
     console.log("in populateFormToBeUpdated ");
     console.log(task);
@@ -219,35 +240,24 @@ function populateFormToBeUpdated(task){
 
 //eventhandler for update button in cards
 function displayUpdateTask(event){
-    //alert(event.target.parentElement.parentElement.parentElement.parentElement.parentElement.id);
-  //  let taskForm = document.querySelector("#taskform");
-
-    //document.getElementById('addTaskBtn').hidden = true;
-
-
-    //changes modal form to display update button
+      //changes modal form to display update button and update title
     document.getElementById('addTaskBtn').style.display = "none";
     document.getElementById('updateTaskBtn').style.display = "block";
+    document.getElementById('formLabel').innerHTML = "Update Task";
     //grab task id from card body
      updateTaskId = Number(event.target.parentElement.parentElement.parentElement.parentElement.parentElement.id);
     console.log("*********in displayupdateTask task id is " + updateTaskId);
     let task = taskPlanner.getTaskById(updateTaskId);
     populateFormToBeUpdated(task);
 
-    //capturing form button for updation in database
+    //capturing form Update button for updation in task array
     let updateTaskBtn = document.querySelector("#updateTaskBtn");
-    //updateTaskBtn.addEventListener("click",updateTask(updateTaskId))  
     console.log("before update eventlistenere function update task id is" + updateTaskId);
-    updateTaskBtn.addEventListener("click", function(){updateTask(updateTaskId);}) ; 
-
-//    let form = document.querySelector("#form");
-  
-    
-
-}
+    updateTaskBtn.addEventListener("click", updateTaskArray) ;
+  }
 
 //event handler for update button in form
-function updateTask(updateTaskId){
+function updateTaskArray(){
     console.log("Updating Task now after update button pressed updateTaskId is " + updateTaskId);
     if(validateForm())
     {        
@@ -255,17 +265,32 @@ function updateTask(updateTaskId){
     taskPlanner.updateTask(updateTaskId,inputTask.value,statusDropdown.value,inputAssignee.value,dueDate.value,description.value);
     console.log(taskPlanner.tasks);
     taskPlanner.render();
-     document.getElementById('updateTaskBtn').style.display = "none";
-
-     document.getElementById('addTaskBtn').style.display = "block";
-    
-    // let hideUpdate = document.querySelector('#updateCardBtn');
-    // if(document.querySelector("#statusDropdown").value == 'Done'){
-    // hideUpdate.style.display = 'none';
-    // }
-
-    let form = document.querySelector("#form");
-    form.reset();
+//reset values
+    updateTaskId = 0;
+    clearForm();
 
     }
+}
+
+//to reset form
+function clearForm(){
+  
+   let form = document.querySelector("#form");
+   form.reset();
+}
+
+//after updating add task button refreshes the modal to addtask form
+let addTaskBtnForModal = document.querySelector("#addTaskBtnForModal");
+addTaskBtnForModal.addEventListener("click",resetTaskFormToAddTask);
+
+//event handler for addTaskBtnForModal,it resets modal to add task
+function resetTaskFormToAddTask(){
+    //hide update button
+    document.getElementById('updateTaskBtn').style.display = "none";
+    document.getElementById('addTaskBtn').hidden = false;
+    //display add button
+    document.getElementById('addTaskBtn').style.display = "block";
+    document.getElementById('formLabel').innerHTML = "Add Task";
+    document.getElementById('addTaskBtn').disabled = true;
+    clearForm();
 }

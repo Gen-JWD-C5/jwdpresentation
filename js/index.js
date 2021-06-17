@@ -23,6 +23,7 @@ function createTaskHtml(taskName, status, assignee, dueDate, description, taskId
                 </div>
               </div>
               <div class="col text-end">
+              <a href="" >
                 <svg
                   id = "deleteBtn"
                   xmlns="http://www.w3.org/2000/svg "
@@ -41,6 +42,8 @@ function createTaskHtml(taskName, status, assignee, dueDate, description, taskId
                           1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z "
                   />
                 </svg>
+                </a>
+                </button>
               </div>
             </div>
 
