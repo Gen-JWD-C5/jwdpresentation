@@ -200,12 +200,17 @@ document.getElementById('addTaskBtn').hidden = false;
 // taskName, status, assignee, dueDate, description = ""
 let todoColumn = document.querySelector("#doList");
 todoColumn.addEventListener("click", displayUpdateTask);
+todoColumn.addEventListener('click',deleteTask);
 let inProgressColumn = document.querySelector("#inProgressList");
 inProgressColumn.addEventListener("click", displayUpdateTask);
+inProgressColumn.addEventListener('click',deleteTask);
 let reviewColumn = document.querySelector("#reviewList");
 reviewColumn.addEventListener("click", displayUpdateTask);
+reviewColumn.addEventListener('click',deleteTask);
 let doneColumn = document.querySelector("#doneList");
 doneColumn.addEventListener("click", displayUpdateTask);
+doneColumn.addEventListener('click',deleteTask);
+
 
 
 //helper function to populate form fields with selected task card
@@ -233,19 +238,19 @@ function displayUpdateTask(event){
     document.getElementById('addTaskBtn').style.display = "none";
     document.getElementById('updateTaskBtn').style.display = "block";
     //grab task id from card body
-     updateTaskId = Number(event.target.parentElement.parentElement.parentElement.parentElement.parentElement.id);
-    console.log("*********in displayupdateTask task id is " + updateTaskId);
-    let task = taskPlanner.getTaskById(updateTaskId);
-    populateFormToBeUpdated(task);
-
-    //capturing form button for updation in database
-    let updateTaskBtn = document.querySelector("#updateTaskBtn");
-    //updateTaskBtn.addEventListener("click",updateTask(updateTaskId))  
-    console.log("before update eventlistenere function update task id is" + updateTaskId);
-    updateTaskBtn.addEventListener("click", function(){updateTask(updateTaskId);}) ; 
-
-//    let form = document.querySelector("#form");
-  
+    if (event.target.id === "updateCardBtn"){
+        updateTaskId = Number(event.target.parentElement.parentElement.parentElement.parentElement.parentElement.id);
+       console.log("*********in displayupdateTask task id is " + updateTaskId);
+       let task = taskPlanner.getTaskById(updateTaskId);
+       populateFormToBeUpdated(task);
+   
+       //capturing form button for updation in database
+       let updateTaskBtn = document.querySelector("#updateTaskBtn");
+       //updateTaskBtn.addEventListener("click",updateTask(updateTaskId))  
+       console.log("before update eventlistenere function update task id is" + updateTaskId);
+       updateTaskBtn.addEventListener("click", function(){updateTask(updateTaskId);}) ; 
+       }
+   
     
 
 }
@@ -258,6 +263,7 @@ function updateTask(updateTaskId){
     //create a new object by storing the values and call the add task function
     taskPlanner.updateTask(updateTaskId,inputTask.value,statusDropdown.value,inputAssignee.value,dueDate.value,description.value);
     console.log(taskPlanner.tasks);
+    taskPlanner.save(); // to save to local storage
     taskPlanner.render();
      document.getElementById('updateTaskBtn').style.display = "none";
 
@@ -267,10 +273,31 @@ function updateTask(updateTaskId){
     // if(document.querySelector("#statusDropdown").value == 'Done'){
     // hideUpdate.style.display = 'none';
     // }
-    taskPlanner.save(); // to save to local storage
+   
 
     let form = document.querySelector("#form");
     form.reset();
 
     }
 }
+
+function deleteTask(event) {
+    console.log("clicked delete button")
+        // if (event.target.classList.contains("deleteBtn"))
+    console.log(event.target.id);
+    if (event.target.id = "deleteBtn") {
+    // get the id for the task you want to target
+    let taskId = Number(event.target.parentElement.parentElement.parentElement.parentElement.parentElement.id);
+    // fire the delete function with task id
+    taskPlanner.deleteTask(taskId);
+    //save the new array
+    taskPlanner.save();
+    // render the new array
+    taskPlanner.render();
+
+    }
+    document.getElementById('updateTaskBtn').style.display = "none";
+
+    document.getElementById('addTaskBtn').style.display = "block";
+}
+
