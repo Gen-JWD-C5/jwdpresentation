@@ -78,7 +78,27 @@ class TaskManager {
         return this._tasks;
     };
     //setters for book array
-    
+     
+    //adding save to local storage method
+    save(){
+      let tasksJson = JSON.stringify(this._tasks);
+      localStorage.setItem("myTasks", tasksJson);
+      let currentId = JSON.stringify(this._currentId);
+      localStorage.setItem("myCurrentId", currentId);
+    }
+
+    //adding the load from local storage method
+    load(){
+      if (localStorage.getItem("myTasks")){
+        const tasksJson = localStorage.getItem("myTasks");
+        this._tasks = JSON.parse(tasksJson);
+      }
+      if (localStorage.getItem("myCurrentId")){
+        const currentId = localStorage.getItem("myCurrentId");
+        this._currentId = JSON.parse(currentId);
+      }
+    }
+
     
     //function addTask
     addTask(taskName, status, assignee, dueDate, description = "") 

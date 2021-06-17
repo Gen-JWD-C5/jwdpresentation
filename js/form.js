@@ -13,6 +13,8 @@ let updateTaskId = 0;
 
 //Instantiate a task planner
 let taskPlanner = new TaskManager();
+taskPlanner.load(); // calling function to load tasks from local storage
+taskPlanner.render();  // calling function to render from local storage
 
 //Extract Form input
 let inputTask = document.querySelector("#inputTask");
@@ -184,6 +186,8 @@ document.getElementById('addTaskBtn').hidden = false;
     //create a new object by storing the values and call the add task function
     taskPlanner.addTask(inputTask.value,statusDropdown.value,inputAssignee.value,dueDate.value,description.value);
     console.log(taskPlanner.tasks);
+
+    taskPlanner.save(); // to save to local storage
     taskPlanner.render();
     let form = document.querySelector("#form");
     form.reset();
@@ -263,6 +267,7 @@ function updateTask(updateTaskId){
     // if(document.querySelector("#statusDropdown").value == 'Done'){
     // hideUpdate.style.display = 'none';
     // }
+    taskPlanner.save(); // to save to local storage
 
     let form = document.querySelector("#form");
     form.reset();
