@@ -17,6 +17,8 @@ let updateTaskId = 0;
 
 //Instantiate a task planner
 let taskPlanner = new TaskManager();
+taskPlanner.load(); // calling function to load tasks from local storage
+taskPlanner.render();  // calling function to render from local storage
 
 //Extract Form input fields
 //used to populate form for updating tasks
@@ -200,8 +202,13 @@ console.log("in add task it works");
     //call the add task function to add to task array
     taskPlanner.addTask(inputTask.value,statusDropdown.value,inputAssignee.value,dueDate.value,description.value);
     console.log(taskPlanner.tasks);
+    
+    // to save to local storage
+    taskPlanner.save(); 
+
     //render tasks on page
     taskPlanner.render();
+    
     clearForm();
     //disable add button to make form ready for adding next task
     document.getElementById('addTaskBtn').disabled = true;
@@ -214,15 +221,20 @@ console.log("in add task it works");
 //capture clicks on 4 columns and get event.target.id of buttons
 let todoColumn = document.querySelector("#doList");
 todoColumn.addEventListener("click", displayUpdateTask);
+todoColumn.addEventListener("click",deleteTask);
 
 let inProgressColumn = document.querySelector("#inProgressList");
 inProgressColumn.addEventListener("click", displayUpdateTask);
+inProgressColumn.addEventListener("click",deleteTask);
 
 let reviewColumn = document.querySelector("#reviewList");
 reviewColumn.addEventListener("click", displayUpdateTask);
+reviewColumn.addEventListener('click',deleteTask);
 
 let doneColumn = document.querySelector("#doneList");
 doneColumn.addEventListener("click", displayUpdateTask);
+doneColumn.addEventListener('click',deleteTask);
+
 
 
 //helper function to populate form fields with selected task card to update
@@ -240,9 +252,12 @@ function populateFormToBeUpdated(task){
 
 //eventhandler for update button in cards
 function displayUpdateTask(event){
-      //changes modal form to display update button and update title
-    document.getElementById('addTaskBtn').style.display = "none";
+    console.log("in display update task")
+
+    if (event.target.id === "updateCardBtn"){
+    //changes modal form to display update button and update title
     document.getElementById('updateTaskBtn').style.display = "block";
+    document.getElementById('addTaskBtn').style.display = "none";       
     document.getElementById('formLabel').innerHTML = "Update Task";
     //grab task id from card body
      updateTaskId = Number(event.target.parentElement.parentElement.parentElement.parentElement.parentElement.id);
@@ -255,7 +270,7 @@ function displayUpdateTask(event){
     console.log("before update eventlistenere function update task id is" + updateTaskId);
     updateTaskBtn.addEventListener("click", updateTaskArray) ;
   }
-
+}
 //event handler for update button in form
 function updateTaskArray(){
     console.log("Updating Task now after update button pressed updateTaskId is " + updateTaskId);
@@ -264,8 +279,9 @@ function updateTaskArray(){
     //create a new object by storing the values and call the add task function
     taskPlanner.updateTask(updateTaskId,inputTask.value,statusDropdown.value,inputAssignee.value,dueDate.value,description.value);
     console.log(taskPlanner.tasks);
+    taskPlanner.save(); // to save to local storage
     taskPlanner.render();
-//reset values
+    //reset values
     updateTaskId = 0;
     clearForm();
 
@@ -285,12 +301,37 @@ addTaskBtnForModal.addEventListener("click",resetTaskFormToAddTask);
 
 //event handler for addTaskBtnForModal,it resets modal to add task
 function resetTaskFormToAddTask(){
-    //hide update button
+    //hide update button unhide add button and disable it
     document.getElementById('updateTaskBtn').style.display = "none";
-    document.getElementById('addTaskBtn').hidden = false;
-    //display add button
     document.getElementById('addTaskBtn').style.display = "block";
     document.getElementById('formLabel').innerHTML = "Add Task";
     document.getElementById('addTaskBtn').disabled = true;
     clearForm();
 }
+
+//event handler for delete task button on task cards
+function deleteTask(event) {
+    
+    console.log("clicked delete button")
+    console.log(event.target.id);
+    if (event.target.id === "deleteBtn") {
+        console.log("deleting the task")
+    // get the id for the task you want to target
+   // let taskId = Number(event.target.parentElement.parentElement.parentElement.parentElement.parentElement.id);
+   console.log(event.target.parentElement.parentElement.parentElement.parentElement.classList);
+   
+   let taskId = Number(event.target.parentElement.parentElement.parentElement.parentElement.id);
+    console.log("deleting task with task id:" + taskId);
+    // fire the delete function with task id
+    taskPlanner.deleteTask(taskId);
+    //save the new array
+    taskPlanner.save();
+    // render the new array
+    taskPlanner.render();
+
+    }
+    // document.getElementById('updateTaskBtn').style.display = "none";
+
+    // document.getElementById('addTaskBtn').style.display = "block";
+}
+
