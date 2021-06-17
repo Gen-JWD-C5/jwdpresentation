@@ -23,7 +23,8 @@ function createTaskHtml(taskName, status, assignee, dueDate, description, taskId
                 </div>
               </div>
               <div class="col text-end">
-              <button id= "deleteBtn" class="btn-close"></button>
+              <button id= "deleteBtn" class=" btn btn-lg btn-outline-secondary"
+              "></button>
               </div>
             </div>
 

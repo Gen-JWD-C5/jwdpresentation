@@ -139,3 +139,11 @@ div.row div.col:nth-child(2n) ul li:nth-child(even) div.card-style{/*even cards 
     display:none;
 
 }
+
+#deleteBtn {
+    background-image: url("../images/trash.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: auto;
+    height: 2rem;    
+}
