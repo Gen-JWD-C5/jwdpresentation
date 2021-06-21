@@ -29,6 +29,7 @@
 */
 
 
+
 .my-shadow-style{
     
     box-shadow: 5px 5px 7px rgba(33,33,33,.7);
@@ -68,7 +69,7 @@ ul li:nth-child(3n) div.card-style{
     box-shadow:10px 10px 7px rgba(0,0,0,.7);
   /* transform: scale(10); */
   /* position:relative; */
-  /* z-index:5; */
+   z-index:5; 
 }
 div.row div.col:nth-child(2n) div.card-style{/*first card of second column*/
     transform: rotate(4deg);
@@ -76,7 +77,7 @@ div.row div.col:nth-child(2n) div.card-style{/*first card of second column*/
 }
 div.row div.col:nth-child(2n) ul li:nth-child(even) div.card-style{/*even cards of 2nd column*/
     transform: rotate(-2deg);
-    background:#cfc; 
+    background:rgb(236, 247, 84); 
 }
 .taskDescription {
     width: 100%;
@@ -92,14 +93,16 @@ div.row div.col:nth-child(2n) ul li:nth-child(even) div.card-style{/*even cards 
 .banner {
     /* border: 1px solid black; */
     width: 100%;
-    height: auto;
+    height: 10%;
     overflow: hidden;
+    display: flex;
 }
 
 .banner img {
-    max-width: 300px;
+    max-width: 10%;
+    min-width: 100px;
     height: auto;
-    display: block;
+    /* display: inline; */
 }
 
 

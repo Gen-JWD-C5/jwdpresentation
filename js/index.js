@@ -121,13 +121,13 @@ class TaskManager {
           }
       }
       let todoColumn = document.querySelector("#doList");
-      todoColumn.innerHTML = taskHtmlListToDo.join();
+      todoColumn.innerHTML = taskHtmlListToDo.join('');
       let inProgressColumn = document.querySelector("#inProgressList");
-      inProgressColumn.innerHTML = taskHtmlListInProgress.join();
+      inProgressColumn.innerHTML = taskHtmlListInProgress.join('');
       let reviewColumn = document.querySelector("#reviewList");
-      reviewColumn.innerHTML = taskHtmlListReview.join();
+      reviewColumn.innerHTML = taskHtmlListReview.join('');
       let doneColumn = document.querySelector("#doneList");
-      doneColumn.innerHTML = taskHtmlListDone.join();
+      doneColumn.innerHTML = taskHtmlListDone.join('');
       
     };
     
