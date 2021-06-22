@@ -5,8 +5,8 @@ function createTaskHtml(taskName, status, assignee, dueDate, description, taskId
   const html = `<li class="list-group-item">
     <div class="row mx-auto">
       <div class="col d-flex justify-content-center">
-        <div id="${taskId}" class="card card-style rounded-0">
-          <div class="card-body">
+        <div id="${taskId}" class="card card-style rounded-0 mb-0">
+          <div class="card-body d-flex flex-column">
             <div class="row">
               <div class="col">
                 <div >
@@ -32,13 +32,16 @@ function createTaskHtml(taskName, status, assignee, dueDate, description, taskId
             <p class="card-text">
               ${description}
             </p>
-            <div class="d-flex justify-content-between">
-              <div class="d-inline-flex p-2 bd-highlight">
+            
+            <div class="row align-items-end mt-auto">
+            <div class="col d-flex justify-content-between align-items-end">
+              <div class=" col d-inline-flex bd-highlight ">
                 ${assignee}
               </div>
-              <div class="d-inline-flex p-2 bd-highlight">
+              <div class="d-inline-flex bd-highlight">
                 ${dueDate}
               </div>
+            </div>
             </div>
           </div>
         </div>
