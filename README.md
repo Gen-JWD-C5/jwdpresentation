@@ -19,6 +19,9 @@ The layout of the Task Planner was designed using Balsamiq.
 **Software** 
 This task planner was built using HTML, CSS, Bootstrap and Vanilla JavaScript.
 
+**Link to the project page**
+https://gen-jwd-c5.github.io/jwdpresentation/
+
 
 
 
