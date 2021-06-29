@@ -19,33 +19,33 @@
 
   <body>
     <header>
-      <div class="col banner justify-content-center"><img
+      <div class="col banner justify-content-between">
+        <img
         src="./images/busy1.png"
         class=""
         alt="page"
-      /></div>
-      <div class="banner">
-        
-      <h2 class = "text-center pt-4 w-100 fs-1">
+      />       
+      <h2 class = "text-center pt-4 fs-1">
       TASK BOARD</h2>
+      <button
+      type="button"
+      id="addTaskBtnForModal"
+      class="btn shadow me-3"
+      data-bs-toggle="modal"
+      data-bs-target="#taskform"
+    >
+      ADD TASK
+    </button>
       </div>
     </header>
 
     <!-- add task button and assignee filter -->
 
-    <div class="container pt-2" >
+    <div class="container px-0  " >
       <!-- Button trigger modal -->
       <div class="row justify-content-evenly mt-2">
         <div class="col d-flex justify-content-center">
-          <button
-            type="button"
-            id="addTaskBtnForModal"
-            class="btn btn-primary px-4"
-            data-bs-toggle="modal"
-            data-bs-target="#taskform"
-          >
-            ADD TASK
-          </button>
+         
 
           <!-- Modal -->
           <div
@@ -223,11 +223,11 @@
 
       <!-- cards layout -->
 
-      <div class="row row-cols-1 row-cols-md-2 row-cols-xl-4  d-flex justify-content-center pt-2 scrollable"> 
+      <div class="row row-cols-1 row-cols-md-2 row-cols-xl-4  d-flex justify-content-between pt-2 scrollable px-0 mx-0"> 
         
         <!-- TO DO  COLUMN -->
 
-        <div id="todoColumn" class="col  task-column mt-3">
+        <div id="todoColumn" class="col  task-column ">
           <h2 class="text-center">TO DO</h2>
           <ul id="doList" class="list-group list-group-flush">
               <!-- start of card list  -->
@@ -237,7 +237,7 @@
 
         <!-- IN PROGRESS COLUMN -->
 
-        <div id="inProgressColumn" class="col task-column mt-3">
+        <div id="inProgressColumn" class="col task-column ">
           <h2 class="text-center">IN PROGRESS</h2>
           <ul id="inProgressList" class="list-group list-group-flush">
               <!-- start of card list  -->
@@ -247,7 +247,7 @@
 
         <!-- REVIEW COLUMN -->
 
-        <div id="reviewColumn" class="col  task-column mt-3">
+        <div id="reviewColumn" class="col  task-column ">
           <h2 class="text-center">REVIEW</h2>
           <ul id="reviewList" class="list-group list-group-flush">
               <!-- start of card list -->
@@ -257,7 +257,7 @@
 
         <!-- DONE COLUMN -->
 
-        <div id="doneColumn" class="col hide-delButton mt-3">
+        <div id="doneColumn" class="col hide-delButton ">
             <h2 class="text-center">DONE</h2>
             <ul id="doneList" class="list-group list-group-flush">
                 <!-- start of class list -->
@@ -268,8 +268,8 @@
       </div>
     </div>
 
-    <footer>
-      <p class = "text-center fst-italic pt-5">&copy Copyright 2021.All rights reserved</p>
+    <footer class="position-relative mt-5">
+      <p class = "text-center  sticky-bottom">&copy Copyright 2021. All rights reserved</p>
     </footer>
     <!-- Optional JavaScript; choose one of the two! -->
 

@@ -1,9 +1,19 @@
-/* body {
-    margin: 2em;
-    align-content: center;
-} */
 
 
+body {
+    position: relative;
+    min-height: 100vh;
+} 
+
+footer{
+    position: absolute;
+    bottom: 0;
+    width:100%;
+    height:2.5rem;
+}
+.container{
+    padding-bottom: 2.5rem;
+}
 /* styling for form */
 
 
@@ -96,15 +106,26 @@ div.row div.col:nth-child(2n) ul li:nth-child(even) div.card-style{/*even cards 
     height: 10%;
     overflow: hidden;
     display: flex;
+    
 }
+
 
 .banner img {
     max-width: 10%;
     min-width: 100px;
-    height: auto;
-    /* display: inline; */
+   
 }
 
+.banner button{
+    height:60%;
+    align-self: center;
+   background: rgb(174, 213, 228);
+   /* box-shadow: 3px 3px rgb(174, 213, 228); */
+}
+.banner button:hover{
+    background:  rgb(128, 196, 221);
+    /* box-shadow: 4px 4px rgb(128, 196, 221); */
+}
 
 /* .col {
     border: 1px solid red;
@@ -123,6 +144,7 @@ div.row div.col:nth-child(2n) ul li:nth-child(even) div.card-style{/*even cards 
 
 .list-group-item {
     border-bottom: none;
+    margin:1rem;
 }
 
 .error-msg-style{
@@ -153,10 +175,10 @@ div.row div.col:nth-child(2n) ul li:nth-child(even) div.card-style{/*even cards 
 
 .card-style {
     
-    min-width: 15rem;
-    min-height: 15rem;
-    max-width: 15rem;
-    max-height: 15rem;
+    min-width: 14rem;
+    min-height: 14rem;
+    max-width: 14rem;
+    max-height: 14rem;
     overflow-x: hidden;
 }
 
@@ -170,4 +192,5 @@ div.row div.col:nth-child(2n) ul li:nth-child(even) div.card-style{/*even cards 
     display: none;
   }
 
+  
   
