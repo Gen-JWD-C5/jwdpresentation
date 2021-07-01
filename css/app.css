@@ -14,6 +14,10 @@ footer {
     height: 2.5rem;
 }
 
+#description {
+    white-space: pre-wrap;
+}
+
 /* styling for form */
 
 
@@ -66,14 +70,19 @@ label {
 }
 
 .card-body{
-    width: 100%;
-    height: 100%;
-    overflow-y: scroll;     
+    overflow-x: hidden;     
 }
 
-.card-body::-webkit-scrollbar {
+.card-text::-webkit-scrollbar {
     display: none;
   }
+  
+.card-text {
+    width: 100%;
+    height: 100%;
+    overflow-y: scroll;
+    white-space: pre-line;
+ } 
 
 ul li:nth-child(odd) div.card-style{
     transform: rotate(-2deg);
@@ -125,7 +134,7 @@ div.row div.col:nth-child(2n) ul li:nth-child(even) div.card-style{/*even cards 
 .banner img {
     max-width: 10%;
     min-width: 100px;
-   
+    height: auto;
 }
 
 .banner button{

@@ -27,9 +27,8 @@ function createTaskHtml(taskName, status, assignee, dueDate, description, taskId
               "></button>
               </div>
             </div>
-
-            <h5 class="card-title mt-2">${taskName}</h5>
-            <p class="card-text">
+            <h5 class="card-title mt-3 mb-0">${taskName}</h5>
+            <p class="card-text mt-0">
               ${description}
             </p>
             
