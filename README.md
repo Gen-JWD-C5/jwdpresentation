@@ -1,4 +1,6 @@
-# jwdpresentation
+**Task Planner Project**
+
+
 **Purpose of the project:**
 The project was to design and implement a Task Planner that can have functionality of :
 
