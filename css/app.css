@@ -73,16 +73,28 @@ label {
     overflow-x: hidden;     
 }
 
-.card-text::-webkit-scrollbar {
+.scrollInfo {
+    overflow-y: scroll;
+}
+
+.scrollInfo::-webkit-scrollbar {
     display: none;
   }
-  
+
+/* .card-text::-webkit-scrollbar {
+    display: none;
+  } */
+
+
+
 .card-text {
     width: 100%;
     height: 100%;
-    overflow-y: scroll;
     white-space: pre-line;
+    padding-top: 0;
  } 
+
+
 
 ul li:nth-child(odd) div.card-style{
     transform: rotate(-2deg);
