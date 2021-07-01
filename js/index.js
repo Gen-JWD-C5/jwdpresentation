@@ -33,7 +33,7 @@ function createTaskHtml(taskName, status, assignee, dueDate, description, taskId
               ${description}
             </p>
             </div>
-            <div class="row align-items-end mt-2">
+            <div class="row align-items-end mt-auto">
             <div class="col d-flex justify-content-between align-items-end">
               <div class=" col d-inline-flex bd-highlight ">
                 ${assignee}
