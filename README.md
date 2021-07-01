@@ -7,10 +7,10 @@ The project was to design and implement a Task Planner that can have functionali
     When adding a task, the task form validates user information using JavaScript.  The Add Task form contains prompts for the user to facilitate correct information input.
     If all information is validated, it gets rendered in the correct status-column.  
 
-- **Updating Task**
+- **Updating Tasks**
   As the task is updated, the task card moves to the correct status-column. When a Task-Card is in Done column, it can't be updated.
  
-- **Deleting Taks**
+- **Deleting Tasks**
   The card can be deleted at any point by clicking a bin icon on each task card.
   
 **Design**
